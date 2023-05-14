@@ -82,7 +82,7 @@ int consulta()
 
     if(file == NULL)//definindo que "Se o file(arquivo armazenado for igual á NULO)
     {
-        printf("Não foi possivel abrir o arquivo, não localizado!.\n");
+        printf("Não foi possivel abrir o arquivo, não localizado!.\n\n");
         printf("Pressione Enter para continuar");
         getchar();
         getchar();
@@ -119,12 +119,14 @@ int deletar()
     printf("Digite o CPF do usuário que deseja deletar:");//coletando a informação
     scanf("%s",cpf);
 
+    system("clear");
+
     FILE *file;//acessando o file dentro do campo FILE(arquivo)
     file = fopen(cpf, "r");//abrindo o file e lendo("r") a string cpf
 
     if(file == NULL)// definindo uma condição//Se essa condição for falsa(instruções)
     {
-      printf("Usuário não encontrado no sistema.\n");
+      printf("Usuário não encontrado no sistema.\n\n");
       printf("Pressione Enter para voltar ao menu.\n");
       getchar();
       getchar();
@@ -146,11 +148,24 @@ int deletar()
 
 int main()
 {
+
     int opcao;//variavel %d
     int laco = 1;//laço de repetição
+    char senhadigitada[]="a";
+    int comparacao;
 
-    while (laco == 1)//laco de repetição
-    {
+    printf("\tCartório da EBAC\n\n");
+    printf("Digite sua senha de acesso para continuar: \n\n");
+    scanf("%s",senhadigitada);
+
+    comparacao = strcmp(senhadigitada, "admin");
+    system("clear");
+
+    if(comparacao == 0)
+  {
+
+     while (laco == 1)//laco de repetição
+     {
         setlocale(LC_ALL,"pt_BR_utf8");//Definindo a linguagem
 
         printf("\t### Cartório da EBAC ###\n\n");// Inicio do menu
@@ -186,17 +201,24 @@ int main()
 
             default://definindo uma condição diferente das seleções
 
-                printf("Essa opcao nao está disponível\n\n");
-                printf("Pressione enter para voltar ao menu...");
-                getchar(); //Aguarda a tecla enter ser pressionada
-                getchar(); //Aguarda a tecla enter ser pressionada novamente
-                break;
+            printf("Essa opcao nao está disponível\n\n");
+            printf("Pressione enter para voltar ao menu...");
+            getchar(); //Aguarda a tecla enter ser pressionada
+            getchar(); //Aguarda a tecla enter ser pressionada novamente
+            break;
          }
 
         system("clear");//limpando a tela
     }
 
-    return 0;
-}
 
+  }
+
+  else
+  printf("Senha inválida! ");
+  getchar();
+  getchar();
+
+
+}
 
